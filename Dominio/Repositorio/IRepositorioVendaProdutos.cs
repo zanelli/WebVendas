@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using WebVendas.Dominio.DTO;
 using WebVendas.Dominio.Entidades;
 
-namespace Dominio.Entidades.Interfaces
+namespace Dominio.Repositorio
 {
-    public interface IServicoVenda : IServicoCrud<Venda>
+    public interface IRepositorioVendaProdutos
     {
         IEnumerable<GraficoViewModel> ListaGrafico();
     }

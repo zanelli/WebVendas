@@ -15,5 +15,7 @@ namespace Aplicacao.Servico.Interfaces
         void Cadastrar(VendaViewModel venda);
 
         void Excluir(int id);
+
+        IEnumerable<GraficoViewModel> ListaGrafico();
     }
 }

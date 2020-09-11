@@ -61,6 +61,7 @@ namespace WebVendas
             services.AddScoped<IRepositorioCliente, RepositorioCliente>();
             services.AddScoped<IRepositorioProduto, RepositorioProduto>();
             services.AddScoped<IRepositorioVenda, RepositorioVenda>();
+            services.AddScoped<IRepositorioVendaProdutos, RepositorioVendaProdutos>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -79,6 +80,7 @@ namespace WebVendas
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            app.UseSession();
             app.UseRouting();
 
             app.UseAuthorization();
@@ -87,7 +89,7 @@ namespace WebVendas
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Login}/{action=Index}/{id?}");
             });
         }
     }

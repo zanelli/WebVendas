@@ -3,6 +3,7 @@ using Dominio.Repositorio;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using WebVendas.Dominio.DTO;
 using WebVendas.Dominio.Entidades;
 
 namespace Dominio.Servicos
@@ -10,9 +11,13 @@ namespace Dominio.Servicos
     public class ServicoVenda : IServicoVenda
     {
         IRepositorioVenda RepositorioVenda;
-        public ServicoVenda(IRepositorioVenda repositorioVenda)
+        IRepositorioVendaProdutos RepositorioVendaProdutos;
+        public ServicoVenda(
+            IRepositorioVenda repositorioVenda,
+            IRepositorioVendaProdutos repositorioVendaProdutos)
         {
             RepositorioVenda = repositorioVenda;
+            RepositorioVendaProdutos = repositorioVendaProdutos;
         }
         public void Cadastrar(Venda venda)
         {
@@ -32,6 +37,11 @@ namespace Dominio.Servicos
         public IEnumerable<Venda> Listagem()
         {
             return RepositorioVenda.Read();
+        }
+
+        public IEnumerable<GraficoViewModel> ListaGrafico()
+        {
+            return RepositorioVendaProdutos.ListaGrafico();
         }
     }
 }
